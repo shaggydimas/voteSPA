@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  root 'posts#hello'
-  resources :posts
+  devise_for :users
+  root 'votes#index'
 
   resources :posts do
     resources :comments do
