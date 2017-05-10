@@ -1,1 +1,19 @@
-<h1>hello <%= current_user ? current_user.email : "dude" %></h1>
+<div class="cf">
+  <div class="pull-left">
+    <h1>hello <%= current_user ? current_user.email : "dude" %></h1>
+  </div>
+  <div class="pull-right">
+    <% if user_signed_in? %>
+      <div>
+          <%= link_to "New vote", new_vote_path, style:"margin-top:30px; display:block;" %>
+      </div>
+    <% end %>    
+  </div>
+</div>
+
+<div>
+  <% @votes.each do |vote| %>
+    <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
+    <hr></hr>
+  <% end %>
+</div>
