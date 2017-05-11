@@ -4,7 +4,7 @@ class VotesController < ApplicationController
   end
   
   def new
-    @vote = Vote.new
+    @vote = current_user.votes.new
   end
   
   def create
