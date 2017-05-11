@@ -14,6 +14,9 @@
 <div>
   <% @votes.each do |vote| %>
     <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
+    <% if vote.options %>
+      <%= render partial: "vote_form", locals: {vote: vote} %>
+    <% end %>
     <hr></hr>
   <% end %>
 </div>
