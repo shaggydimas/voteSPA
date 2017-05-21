@@ -12,9 +12,11 @@
 </div>
 
 <div>
-  <% @votes.each do |vote| %>
-    <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
-        <%= render partial: "vote_form", locals: {vote: vote} %>
-    <hr>
+  <% if @votes.any? %>
+    <% @votes.each do |vote| %>
+      <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
+          <%= render partial: "vote_form", locals: {vote: vote} %>
+      <hr>
+    <% end %>
   <% end %>
 </div>

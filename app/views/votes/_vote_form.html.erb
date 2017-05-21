@@ -1,4 +1,4 @@
-<% if !(cookies[:voted].length == 0) && JSON.parse(cookies[:voted]).include?(vote.id) %>
+<% if cookies[:voted].any? && JSON.parse(cookies[:voted]).include?(vote.id) %>
   You've already voted<br>
   <% JSON.parse(vote.vote_count).each do |k,v| %>
     <%= k %> - <%= v %><br>
