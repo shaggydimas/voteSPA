@@ -5,7 +5,7 @@
   <div class="pull-right">
     <% if user_signed_in? %>
       <div>
-          <%= link_to "New vote", new_vote_path, style:"margin-top:30px; display:block;" %>
+          <%= link_to "New vote", new_vote_path, style:"margin-top:30px; display:block;", class:"btn btn-raised btn-success" %>
       </div>
     <% end %>    
   </div>
@@ -14,9 +14,7 @@
 <div>
   <% @votes.each do |vote| %>
     <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
-    <% if vote.options %>
-      <%= render partial: "vote_form", locals: {vote: vote} %>
-    <% end %>
-    <hr></hr>
+        <%= render partial: "vote_form", locals: {vote: vote} %>
+    <hr>
   <% end %>
 </div>

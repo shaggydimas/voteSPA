@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510210029) do
+ActiveRecord::Schema.define(version: 20170516205742) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"
@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 20170510210029) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "votes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.string   "title"
     t.string   "options"
+    t.string   "users_liked", default: "[]"
+    t.string   "vote_count",  default: "{}"
   end
 
 end
