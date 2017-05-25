@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-material-design
+$(function(){
+  $('form.vote-form').on('click','label', function(e){
+    var el = $(this);
+    var data =  { options: $('input[type="radio"]:checked').val() };
+    $.post( el.closest('form').attr('action'), data );
+  });
+})

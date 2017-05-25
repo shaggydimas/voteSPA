@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  require 'ext/numeric'
   skip_before_filter :verify_authenticity_token, :only => [:add_vote]
   def index
     if !cookies[:voted] || cookies[:voted].length == 0
@@ -17,17 +18,20 @@ class VotesController < ApplicationController
   end
   
   def add_vote
-    vote = Vote.find(params[:id])
+    @vote = Vote.find(params[:id])
     liked_posts = JSON.parse(cookies[:voted])
-    liked_posts.push(vote.id)
+    liked_posts.push(@vote.id)
     cookies[:voted] = liked_posts.to_json
-    increment_count = JSON.parse(vote.vote_count)
+    increment_count = JSON.parse(@vote.vote_count)
     increment_count[params[:options]] += 1
-    vote.update_columns(
+    @vote.update_columns(
       vote_count: increment_count.to_json
     )
     cookies.signed[:name] = "Dmitri"
-    redirect_to root_path
+    
+    respond_to do |format|
+      format.js
+    end
   end
   
   private

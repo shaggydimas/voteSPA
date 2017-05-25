@@ -1,13 +1,12 @@
 <% if !(cookies[:voted].empty?) && JSON.parse(cookies[:voted]).include?(vote.id) %>
-  You've already voted<br>
-  <% JSON.parse(vote.vote_count).each do |k,v| %>
-    <%= k %> - <%= v %><br>
-  <% end %>
+  <%= render partial: "results", locals: { vote: vote } %>
 <% else %>
-  <form action="/vote/<%= vote.id %>" method="POST">
-    <% JSON.parse(vote.options).each do |option| %>
-      <label><%= option %><input name="options" type="radio" value="<%= option %>"></label>
-    <% end %>
-    <input type="submit" value="submit">
-  </form>
+  <div id="vote-<%= vote.id %>">
+    <form action="/vote/<%= vote.id %>" method="POST" data-id="<%= vote.id %>" class="vote-form">
+      <% JSON.parse(vote.options).each do |option| %>
+        <label><%= option %><input name="options" type="radio" value="<%= option %>"></label>
+      <% end %>
+      <input type="submit" value="submit">
+    </form>
+  </div>
 <% end %>

@@ -33,3 +33,13 @@ nav {
 .pull-right {
     float: right;
 }
+.vote-form {
+    label {
+        background: lightblue;
+        display: block;
+        text-align: center;
+    }
+    input {
+        width: 100%;
+    }
+}
