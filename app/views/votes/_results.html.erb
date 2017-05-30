@@ -1,4 +1,6 @@
 You've already voted<br>
+<% total = vote.count_total %>
 <% JSON.parse(vote.vote_count).each do |k,v| %>
-  <%= k %> - <%= v %><br>
+  <%= k %><br>
+  <div class="progress-bar" style="width:<%= (v).percent_of(total).round() %>%"><%= v %></div>
 <% end %>

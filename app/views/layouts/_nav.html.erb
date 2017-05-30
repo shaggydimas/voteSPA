@@ -1,11 +1,27 @@
 <nav>
-    <ul>
-        <% if !user_signed_in? %>
-            <li><%= link_to "sign in", new_user_session_path, class:"btn btn-raised btn-info" %></li>
-            <li><%= link_to "sign up", new_user_registration_path, class:"btn btn-raised btn-info" %></li>
-        <% end %>
-        <% if user_signed_in? %>
-            <li><%= link_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-raised btn-info" %></li>
-        <% end %>
-    </ul>
+    <div class="wrap">
+        <ul>
+            <% if !user_signed_in? %>
+                <li><%= link_to "log in", new_user_session_path, class:"modal-toggle" %></li>
+                <li><%= link_to "sign up", new_user_registration_path, class:"pink" %></li>
+            <% end %>
+            <% if user_signed_in? %>
+                <li><%= link_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-raised btn-info" %></li>
+            <% end %>
+        </ul>
+    </div>
 </nav>
+<script>
+    $(function(){
+        $('.modal-toggle').on('click',function(e){
+            e.preventDefault();
+            $('.modal').fadeToggle();
+        });
+        $('html').on('click','.modal',function(e){
+            $(this).fadeOut();
+        });
+        $('html').on('click','.modal form',function(e){
+            e.stopPropagation();
+        });
+    })
+</script>

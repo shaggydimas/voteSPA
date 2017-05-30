@@ -12,5 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-material-design
  */
+@import url("https://gist.githubusercontent.com/haggen/2624063/raw/9f0f72e62145538c32f726793b7303c3e820f3c1/proxima-nova.css");

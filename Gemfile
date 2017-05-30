@@ -9,7 +9,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'simple_form'
-gem 'bootstrap-material-design'
 group :development, :test do
   gem 'byebug'
 end
@@ -17,6 +16,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'sqlite3'
   gem 'spring'
+  gem 'rack-mini-profiler', require: false
 end
 group :production do
   gem 'pg'
