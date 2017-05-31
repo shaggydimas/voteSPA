@@ -1,7 +1,4 @@
 <div class="cf">
-  <div class="pull-left">
-    <h1>hello <%= current_user ? current_user.email : "dude" %></h1>
-  </div>
   <div class="pull-right">
     <% if user_signed_in? %>
       <div>
@@ -14,7 +11,9 @@
 <div>
   <% if @votes.any? %>
     <% @votes.each do |vote| %>
-      <p><%= vote.title %> <span>vote by: <%= User.find(vote.user_id).email %></span></p>
+      <p>
+        <b><%= vote.title %></b>
+      </p>
           <%= render partial: "vote_form", locals: {vote: vote} %>
       <hr>
     <% end %>
