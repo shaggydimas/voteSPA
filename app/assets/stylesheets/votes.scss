@@ -2,10 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-    background: #fff !important;
+    background: #e2e6e4 !important;
     margin: 0;
     font-family: "Verdana";
     font-size:16px;
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 100px;
+}
+.row {
+    clear: both;
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.hidden {
+    display: none;
 }
 .wrap {
     max-width: 900px;
@@ -72,17 +85,23 @@ nav {
 }
 .vote-form {
     label {
-        background: lightblue;
         display: block;
-        text-align: center;
+        margin: 5px 0;
+        input {
+            float: left;
+        }
     }
-    input {
-        width: 100%;
+    input[type="submit"]{
+        display: none;
     }
+}
+.progress-wrap {
+    background: #f2f2f2;
 }
 .progress-bar {
     height: 20px;
-    background: lightblue;
+    background: #b95f89;
+    color: #fff;
     animation: bar .5s;
     animation-fill-mode: forwards;
     text-align: center;
@@ -91,6 +110,27 @@ nav {
 @keyframes bar {
     0% {
         width: 0;
+    }
+}
+.btn-default {
+    padding: 11px 14px;
+    border-radius: 4px;
+    background: #b95f89;
+    color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    border: none;
+    outline: none;
+    &.blue {
+        background: #17435a;
+        &:hover {
+            background: #133849;
+            color: #fff;
+        }
+    }
+    &:hover {
+        background: #fff;
+        color: #b95f89;
     }
 }
 .modal {
@@ -127,5 +167,21 @@ nav {
         color: #fff;
         font-size: 35px;
         text-shadow: 3px 3px 0 rgba(0,0,0,.8);
+    }
+}
+.vote {
+    float: left;
+    width: 49%;
+    box-sizing: border-box;
+    padding: 25px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    margin-bottom: 15px;
+    &:first-child {
+        margin-right: 2%;
+    }
+    p {
+        margin-top: 0;
     }
 }

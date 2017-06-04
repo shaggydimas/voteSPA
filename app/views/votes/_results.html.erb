@@ -1,5 +1,8 @@
 <% total = vote.count_total %>
-<% JSON.parse(vote.vote_count).each do |k,v| %>
+<% sorted = JSON.parse(vote.vote_count).sort {|a1,a2| a2[1]<=>a1[1]} %>
+<% sorted.each do |k,v| %>
   <%= k %><br>
-  <div class="progress-bar" style="width:<%= (v).percent_of(total).round() %>%"><%= v %></div>
+  <div class="progress-wrap">
+    <div class="progress-bar" style="width:<%= (v).percent_of(total).round() %>%"><%= v %></div>
+  </div>
 <% end %>

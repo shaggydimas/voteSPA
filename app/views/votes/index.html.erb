@@ -2,7 +2,8 @@
   <div class="pull-right">
     <% if user_signed_in? %>
       <div>
-          <%= link_to "New vote", new_vote_path, style:"margin-top:30px; display:block;", class:"btn btn-raised btn-success" %>
+          <%= link_to "New vote", new_vote_path, class:"btn-default" %>
+          <br><br><br>
       </div>
     <% end %>    
   </div>
@@ -10,12 +11,17 @@
 
 <div>
   <% if @votes.any? %>
-    <% @votes.each do |vote| %>
-      <p>
-        <b><%= vote.title %></b>
-      </p>
-          <%= render partial: "vote_form", locals: {vote: vote} %>
-      <hr>
+    <% @votes.each_slice(2) do |slice| %>
+      <div class="row">
+        <% slice.each do |vote|%>
+          <div class="vote">
+            <p>
+              <b><%= vote.title %></b>
+            </p>
+            <%= render partial: "vote_form", locals: {vote: vote} %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

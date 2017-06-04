@@ -20,4 +20,21 @@ $(function(){
     var data =  { options: $('input[type="radio"]:checked').val() };
     $.post( el.closest('form').attr('action'), data );
   });
+  var c_form = $('.custom-form');
+  var i = 1;
+  $('.add-options').on('click',function(e){
+    if(i > 6) return;
+    i++;
+    c_form.append('<input type="text" placeholder="option '+ i + '"><br>');
+  });
+  var form = $('#new_vote');
+  var form_data = [];
+  $('#create_vote').on('click', function(e) {
+      var inputs = c_form.children('input[type="text"]');
+      inputs.each(function(i,v){
+        form_data.push($(this).val());
+      });
+      $('#vote_options').val(JSON.stringify(form_data));
+      form.trigger('submit');
+  });
 });

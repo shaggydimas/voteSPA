@@ -1,5 +1,12 @@
 <%= simple_form_for @vote do |f| %>
-  <%= f.input :title %>
-  <%= f.input :options %>
-  <%= f.button :submit %>
+  <%= f.input :title, label: false, placeholder:"title" %>
+  <%= f.input :options, :as => :hidden, label: false, placeholder:"options" %>
+  <%= f.button :submit, class:"hidden" %>
 <% end %>
+<div class="custom-form">
+  <p>Add your options</p>
+  <input type="text" placeholder="option 1"></input><br>
+</div>
+<br>
+<button class="add-options btn-default blue"><b>+</b></button>
+<button id="create_vote" class="btn-default">Create vote</button>

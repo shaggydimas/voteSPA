@@ -14,7 +14,6 @@ class Vote < ActiveRecord::Base
 end
 
 def save_as_json
-    self.options = self.options.split(',').to_json
     create_count(self.options)
 end
 def create_count(opt)
