@@ -1,5 +1,9 @@
 <div class='hero'>
   <div class="wrap">
-      <h1>hello <%= current_user ? current_user.name : "dude" %></h1>
+      <h1>
+        <%= link_to root_path do %>
+          hello <%= current_user ? current_user.name : "dude" %>
+        <% end %>
+      </h1>
   </div>
 </div>
