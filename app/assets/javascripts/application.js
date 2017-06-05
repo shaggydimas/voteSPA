@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(function(){
+$( document ).on('turbolinks:load', function() {
+  console.log('worksing');
   $('form.vote-form').on('click','label', function(e){
     var el = $(this);
     var data =  { options: $('input[type="radio"]:checked').val() };
@@ -24,6 +26,7 @@ $(function(){
   var i = 1;
   $('.add-options').on('click',function(e){
     if(i > 6) return;
+    console.log('hi');
     i++;
     c_form.append('<input type="text" placeholder="option '+ i + '"><br>');
   });
@@ -37,4 +40,10 @@ $(function(){
       $('#vote_options').val(JSON.stringify(form_data));
       form.trigger('submit');
   });
+  $('.custom-form').on('keyup',' input[type="text"]',function(e) {
+      if(e.key === "Enter"){
+        $('button.add-options').trigger('click');
+        $('input[type="text"]').last().focus();
+      }
+  })
 });
