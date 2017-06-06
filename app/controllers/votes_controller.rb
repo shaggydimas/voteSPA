@@ -12,6 +12,10 @@ class VotesController < ApplicationController
     @vote = current_user.votes.new
   end
   
+  def show
+    @vote = Vote.find(params[:id])
+  end
+  
   def create
     current_user.votes.create(vote_params)
     redirect_to root_path
@@ -21,13 +25,12 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     liked_posts = JSON.parse(cookies[:voted])
     liked_posts.push(@vote.id)
-    cookies[:voted] = liked_posts.to_json
+    cookies.permanent[:voted] = liked_posts.to_json
     increment_count = JSON.parse(@vote.vote_count)
     increment_count[params[:options]] += 1
     @vote.update_columns(
       vote_count: increment_count.to_json
     )
-    cookies.signed[:name] = "Dmitri"
     
     respond_to do |format|
       format.js

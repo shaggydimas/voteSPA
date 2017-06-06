@@ -1,6 +1,7 @@
 <nav>
     <div class="wrap">
         <ul>
+            <li><a class="logo" href="/">Votissimo</a></li>
             <% if !user_signed_in? %>
                 <li><%= link_to "log in", new_user_session_path, :data => { :modal => '#sign-in' } %></li>
                 <li><%= link_to "sign up", new_user_registration_path, class:"pink", :data => { :modal => '#sign-up' } %></li>

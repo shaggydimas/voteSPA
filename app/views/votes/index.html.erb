@@ -15,10 +15,16 @@
       <div class="row">
         <% slice.each do |vote|%>
           <div class="vote">
-            <p>
-              <b><%= vote.title %></b>
-            </p>
-            <%= render partial: "vote_form", locals: {vote: vote} %>
+            <header>
+              <p>
+                <%= link_to vote_path(vote) do %>
+                  <b><%= vote.title %></b>
+                <% end %>
+              </p>
+            </header>
+            <div class="body">
+              <%= render partial: "vote_form", locals: {vote: vote} %>
+            </div>
           </div>
         <% end %>
       </div>
